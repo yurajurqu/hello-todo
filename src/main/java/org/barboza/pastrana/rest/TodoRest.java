@@ -15,6 +15,7 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import org.barboza.pastrana.entity.Todo;
@@ -54,5 +55,13 @@ public class TodoRest {
     @GET
     public List<Todo> getTodos(){
         return todoService.getTodos();
+    }
+    @Path("status")
+    @POST
+    public Response marksAsComplete(@QueryParam("id") Long id){
+        Todo todo = todoService.findTodoById(id);
+        todo.setIsCompleted(true);
+        todoService.updateTodo(todo);
+        return Response.ok(todo).build();
     }
 }
