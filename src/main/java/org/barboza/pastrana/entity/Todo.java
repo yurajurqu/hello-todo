@@ -1,6 +1,6 @@
 package org.barboza.pastrana.entity;
 
-import java.time.LocalDate;
+import java.time.LocalDate;   
 import javax.json.bind.annotation.JsonbDateFormat;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
